@@ -14,4 +14,5 @@ public class MovieDto {
     private final String genre;
 
     private final Integer length;
+
 }
