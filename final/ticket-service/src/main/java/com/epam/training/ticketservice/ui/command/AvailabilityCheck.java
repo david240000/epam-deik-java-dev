@@ -17,7 +17,7 @@ public class AvailabilityCheck {
         this.userService = userService;
     }
 
-    private Availability isAvailable() {
+    public Availability isAvailable() {
         Optional<UserDto> user = userService.getLoggedInUser();
         if (user.isPresent() && user.get().getRole() == User.Role.ADMIN) {
             return Availability.available();
