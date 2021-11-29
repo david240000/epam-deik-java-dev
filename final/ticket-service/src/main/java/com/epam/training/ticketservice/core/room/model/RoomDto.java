@@ -16,7 +16,7 @@ public class RoomDto {
 
     private final Integer colNumber;
 
-    public Integer getSeatsNumber(){
-        return rowNumber*colNumber;
+    public Integer getSeatsNumber() {
+        return rowNumber * colNumber;
     }
 }
