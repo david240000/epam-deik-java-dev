@@ -8,6 +8,7 @@ import lombok.Getter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -21,4 +22,11 @@ public class ScreeningDto {
 
     @DateTimeFormat(pattern = "YYYY-MM-DD hh:mm")
     private LocalDateTime date;
+
+    @Override
+    public String toString() {
+        return movie.getTitle() + " (" + movie.getGenre() + ", " +  movie.getLength() + " minutes), screened in room "
+                + room.getName() + ", at " + date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+
+    }
 }

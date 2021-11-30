@@ -40,7 +40,7 @@ public class UserCommand {
         if (userDto.isEmpty()) {
             return "You are not signed in";
         }
-        return "Signed in with privileged account " + userDto.get().getUsername();
+        return "Signed in with privileged account '" + userDto.get().getUsername() + "'";
 
     }
 }

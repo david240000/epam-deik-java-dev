@@ -46,10 +46,16 @@ public class ScreeningServiceImpl implements ScreeningService {
         Objects.requireNonNull(movieTitle, "Move name cannot be null");
         Objects.requireNonNull(roomName, "Room name cannot be null");
         Objects.requireNonNull(date, "Date cannot be null");
-        Movie movie = movieRepository.findByTitle(movieTitle).get();
-        Room room = roomRepository.findByName(roomName).get();
-        Screening newScreening = new Screening(movie, room, date);
-        List<Screening> screeningsInRoom = screeningRepository.findByRoom(room);
+        Optional<Movie> movie = movieRepository.findByTitle(movieTitle);
+        Optional<Room> room = roomRepository.findByName(roomName);
+        if (movie.isEmpty()) {
+            throw new IllegalArgumentException("Movie doesn't exist");
+        }
+        if (room.isEmpty()) {
+            throw new IllegalArgumentException("Room doesn't exist");
+        }
+        Screening newScreening = new Screening(movie.get(), room.get(), date);
+        List<Screening> screeningsInRoom = screeningRepository.findByRoom(room.get());
         screeningsInRoom.forEach(screening -> checkRoomIsFree(screening,newScreening));
         screeningRepository.save(newScreening);
 
@@ -60,9 +66,16 @@ public class ScreeningServiceImpl implements ScreeningService {
         Objects.requireNonNull(movieTitle, "Move name cannot be null");
         Objects.requireNonNull(roomName, "Room name cannot be null");
         Objects.requireNonNull(date, "Date cannot be null");
-        Movie movie = movieRepository.findByTitle(movieTitle).get();
-        Room room = roomRepository.findByName(roomName).get();
-        screeningRepository.findByMovieAndRoomAndDate(movie, room, date);
+        Optional<Movie> movie = movieRepository.findByTitle(movieTitle);
+        if (movie.isEmpty()) {
+            throw new IllegalArgumentException("Movie doesn't exist");
+        }
+        Optional<Room> room = roomRepository.findByName(roomName);
+        if (room.isEmpty()) {
+            throw new IllegalArgumentException("Room doesn't exist");
+        }
+        Screening screening = screeningRepository.findByMovieAndRoomAndDate(movie.get(), room.get(), date).get();
+        screeningRepository.delete(screening);
 
     }
 

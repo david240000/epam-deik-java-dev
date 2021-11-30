@@ -19,4 +19,10 @@ public class RoomDto {
     public Integer getSeatsNumber() {
         return rowNumber * colNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Room " + name + " with " + getSeatsNumber()
+                + " seats, " + rowNumber + " rows and " + colNumber + " columns";
+    }
 }
