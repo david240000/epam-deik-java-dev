@@ -56,7 +56,7 @@ public class ScreeningServiceImpl implements ScreeningService {
         }
         Screening newScreening = new Screening(movie.get(), room.get(), date);
         List<Screening> screeningsInRoom = screeningRepository.findByRoom(room.get());
-        screeningsInRoom.forEach(screening -> checkRoomIsFree(screening,newScreening));
+        screeningsInRoom.forEach(screening -> checkRoomIsFree(screening, newScreening));
         screeningRepository.save(newScreening);
 
     }
@@ -81,7 +81,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 
     private void checkRoomIsFree(Screening existScreening, Screening newScreening) {
         final Integer pause = 10;
-        if (existScreening.getDate().isBefore(newScreening.getDate()))  {
+        if (existScreening.getDate().isBefore(newScreening.getDate()) || existScreening.getDate().isEqual(newScreening.getDate()))  {
             if (existScreening.getDate().plusMinutes(existScreening.getMovie().getLength())
                     .isAfter(newScreening.getDate())) {
                 throw new IllegalArgumentException("There is an overlapping screening");
@@ -101,9 +101,5 @@ public class ScreeningServiceImpl implements ScreeningService {
                 .room(screening.getRoom())
                 .date(screening.getDate())
                 .build();
-    }
-
-    private Optional<ScreeningDto> convertEntityToScreeningDto(Optional<Screening> screening) {
-        return screening.isEmpty() ? Optional.empty() : Optional.of(convertEntityToScreeningDto(screening.get()));
     }
 }

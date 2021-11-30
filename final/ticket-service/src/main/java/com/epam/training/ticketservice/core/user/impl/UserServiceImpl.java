@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    UserServiceImpl(UserDto loggedInUser, UserRepository userRepository) {
+    public UserServiceImpl(UserDto loggedInUser, UserRepository userRepository) {
         this.loggedInUser = loggedInUser;
         this.userRepository = userRepository;
     }
