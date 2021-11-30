@@ -1,5 +1,6 @@
 package com.epam.training.ticketservice.core.room.persistence.entity;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import javax.persistence.Column;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

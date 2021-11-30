@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import javax.persistence.Column;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

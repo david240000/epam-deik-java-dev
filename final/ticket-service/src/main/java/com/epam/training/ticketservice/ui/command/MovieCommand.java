@@ -10,6 +10,8 @@ import org.springframework.shell.standard.ShellMethodAvailability;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+
 @ShellComponent
 public class MovieCommand {
 

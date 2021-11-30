@@ -3,11 +3,12 @@ package com.epam.training.ticketservice.core.movie.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.ToString;
+import lombok.EqualsAndHashCode;
 
 @AllArgsConstructor
 @Getter
 @Builder
+@EqualsAndHashCode
 public class MovieDto {
 
     private final String title;
@@ -15,6 +16,7 @@ public class MovieDto {
     private final String genre;
 
     private final Integer length;
+
 
     @Override
     public String toString() {
