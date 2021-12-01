@@ -6,11 +6,13 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.6</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>com.epam.training.ticketservice</groupId>
+        <artifactId>ticket-service-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
+
+
 
     <properties>
         <java.version>11</java.version>
@@ -22,10 +24,6 @@
         <surefire-maven-plugin.version>3.0.0-M5</surefire-maven-plugin.version>
         <junit.version>5.7.1</junit.version>
         <spring-shell-starter.version>2.0.1.RELEASE</spring-shell-starter.version>
-            <requirements.fail-build-on-checkstyle-error>false</requirements.fail-build-on-checkstyle-error>
-            <requirements.jacoco-line-coverage>0.4</requirements.jacoco-line-coverage>
-            <requirements.jacoco-branch-coverage>0.4</requirements.jacoco-branch-coverage>
-            <requirements.cucumber-tags>@grade2-requirement</requirements.cucumber-tags>
     </properties>
 
     <dependencies>
@@ -70,9 +68,6 @@
             <version>1.18.20</version>
         </dependency>
     </dependencies>
-    <dependencyManagement>
-
-    </dependencyManagement>
 
     <build>
         <plugins>
@@ -161,10 +156,12 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
         </plugins>
     </build>
 

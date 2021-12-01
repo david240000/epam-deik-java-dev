@@ -81,7 +81,8 @@ public class ScreeningServiceImpl implements ScreeningService {
 
     private void checkRoomIsFree(Screening existScreening, Screening newScreening) {
         final Integer pause = 10;
-        if (existScreening.getDate().isBefore(newScreening.getDate()) || existScreening.getDate().isEqual(newScreening.getDate()))  {
+        if (existScreening.getDate().isBefore(newScreening.getDate())
+                || existScreening.getDate().isEqual(newScreening.getDate()))  {
             if (existScreening.getDate().plusMinutes(existScreening.getMovie().getLength())
                     .isAfter(newScreening.getDate())) {
                 throw new IllegalArgumentException("There is an overlapping screening");
